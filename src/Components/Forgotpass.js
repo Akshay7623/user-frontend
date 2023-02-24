@@ -88,6 +88,7 @@ const Forgotpass = () => {
             toastMessage('Please send OTP');
             return;
         }
+        navigate('/login');
      })
 
     }

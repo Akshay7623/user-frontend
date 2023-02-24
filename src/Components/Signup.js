@@ -284,6 +284,7 @@ const Signup = () => {
     <> 
     <Header back="/login" title="Register"/>
     {loading=='' ? <div className="loading-box"><img  className="rotating loading-img" src={Loading} /></div> : <span></span>}
+    
     <div id="toaster" ref={toastRef} className="loading-box flex flex-col justify-center hide-submenu recharge-error">
       <div className="text-white text-center mr-[10px] text-[12px] mt-[20px]">Minimum Amount Must be 100 </div>
     </div>

@@ -276,16 +276,7 @@ const Game = () => {
         return;
       }
     });
-
    }
- 
- 
-  // console.log('color is ',betColor);
-  // console.log('contract amount ',contractAmount);
-  // console.log('number of order is ',totalOrder);
-  // console.log('totol sum is ',totalSum);
-  // console.log('server is ',server);
-
   
   }
 

@@ -62,6 +62,7 @@ const Login = () => {
     }
     }).then((data)=>data.json()).then((finalData)=>{
       if (finalData.message === 'INVALID_DATA') {
+        toastMessage('Please enter valid Number or Password');
         return;
       }
       if(finalData.message === 'VERIFIED'){
@@ -70,7 +71,6 @@ const Login = () => {
         navigate('/home');
         return;
       }
-     console.log(finalData);
     })
   
 
@@ -82,10 +82,23 @@ const Login = () => {
     messageEle.classList.add('invisible');
    }
 
+
+   const toastMessage = (message)=>{
+    document.getElementById('toaster').firstChild.innerHTML = message;
+    document.getElementById('toaster').classList.remove('hide-submenu');
+    document.getElementById('toaster').classList.add('show-submenu');
+    setTimeout(()=>{
+      document.getElementById('toaster').classList.remove('show-submenu');
+      document.getElementById('toaster').classList.add('hide-submenu');
+    },2000)
+    }
+
    useEffect(()=>{
     AuthUser().then((data)=>{
       if(!data.message){
        navigate('/login');
+      }else{
+      navigate('/home');
       }
     setLoading('some');
     });
@@ -94,6 +107,9 @@ const Login = () => {
   return (
     <> 
     <Header back="/login" title="Login"/>
+    <div id="toaster" className="loading-box flex flex-col justify-center recharge-error hide-submenu">
+        <div className="text-white text-center mr-[10px] text-[12px] mt-[25px]"></div>
+    </div>
     {loading=='' ? <div className="loading-box"><img  className="rotating loading-img" src={Loading} /></div> : <span></span>}
     <div ref={numberRef} className="flex flex-row mt-[30px] py-[10px] bg-white items-center mx-[15px] px-[20px] pl-[15px] rounded-[5px] gap-[15px] h-[46px]">
     <div className="flex flex-row">
